@@ -15,22 +15,23 @@ public class MemberRepository {
     public Member save(Member member) {
         member.setId(++sequence);
         log.info("save : member={}", member);
-        store.put(member.getId(), member);
+        store.put(member.getId(), member); // -> getId로 찾고, member를 집어넣어준다.
         return member;
     }
 
     public Member findById(Long id) {
-        return store.get(id);
+        return store.get(id); // -> key가 나오면 value가 나온다.
     }
 
     public Optional<Member> findByLoginId(String loginId) {
+        // -> m.getLoginId().equals(loginId) m.getLoginId가 파라미터로 넘어온 loginId와 같은가를 비교.
         return findAll().stream()
                 .filter(m -> m.getLoginId().equals(loginId))
                 .findFirst();
     }
 
     public List<Member> findAll() {
-        return new ArrayList<>(store.values());
+        return new ArrayList<>(store.values()); // -> store에 value만 뽑아서 반환
     }
 
     public void clearStore() {
