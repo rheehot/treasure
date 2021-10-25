@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import spring.mall.domain.member.Member;
 import spring.mall.domain.member.MemberRepository;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Slf4j
 @Controller
 @RequiredArgsConstructor
@@ -18,14 +21,15 @@ public class HomeController {
     private final MemberRepository memberRepository;
 
     @GetMapping("/")
-    public String homeLogin(@CookieValue(name = "memberId", required = false) Long memberId, Model model) {
+    public String homeLogin(HttpServletRequest request, Model model) {
 
-        if (memberId == null) {
+        //세션이 없으면 Home으로 이동
+        HttpSession session = request.getSession(false);
+        if (session == null) {
             return "home";
         }
 
-        //로그인
-        Member loginMember = memberRepository.findById(memberId);
+        Member loginMember = (Member) session.getAttribute(SessionConst.LOGIN_MEMBER);
         if (loginMember == null) {
             return "home";
         }
