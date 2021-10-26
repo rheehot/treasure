@@ -28,12 +28,10 @@ public class TestDataInit {
 
     @PostConstruct
     public void itemInit() {
-        Item item = new Item();
-        item.setItemName("후드후드");
-        item.setContent("따듯한 후드후드");
-        item.setPrice(10000);
-        item.setQuantity(10);
-        item.setState("판매중");
-        itemRepository.save(item);
+
+        itemRepository.save(new Item("itemA", "아이템 에이", 10000, 10, "판매중"));
+        itemRepository.save(new Item("itemB", "아이템 비", 20000, 20, "판매중"));
+        itemRepository.save(new Item("itemC", "아이템 씨", 30000, 30, "판매중"));
+        itemRepository.save(new Item("itemD", "아이템 디", 40000, 40, "품절"));
     }
 }
