@@ -1,20 +1,28 @@
 package spring.mall.domain.member;
 
-import lombok.Data;
 
-import javax.validation.constraints.NotEmpty;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+
+@Getter
+@Setter
+@Entity
 public class Member {
-    //회원가입 클래스
-
+    @Id
+    @GeneratedValue
+    @Column(name = "member_id")
     private Long id;
-    @NotEmpty
-    private String loginId; //로그인 아이디
-    @NotEmpty
-    private String name; //사용자 이름
-    @NotEmpty
-    private String password; //사용자 패스워드
+    private String loginId;
+    private String name;
+    private String password;
+    @Embedded
+    private Address address;
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
 }
 
 

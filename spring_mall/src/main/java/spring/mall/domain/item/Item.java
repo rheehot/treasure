@@ -1,39 +1,26 @@
 package spring.mall.domain.item;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 
-@Data
+@Getter
+@Setter
 @Entity
-@Table(name = "Item")
 public class Item {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
+    @Column(name = "item_id")
     private Long id;
-    @NotEmpty
-    @Column(length = 50)
+
     private String itemName;
-    @NotEmpty
-    @Column(length = 255)
+
     private String content;
-    @NotEmpty
-    private Integer price;
-    @NotEmpty
-    private Integer quantity;
-    @NotEmpty
-    private String state;
 
-    public Item(String itemName, String content, Integer price, Integer quantity, String state) {
-        this.itemName = itemName;
-        this.content = content;
-        this.price = price;
-        this.quantity = quantity;
-        this.state = state;
-    }
+    private int price;
 
-    public Item() {
-
-    }
+    private int quantity;
 }

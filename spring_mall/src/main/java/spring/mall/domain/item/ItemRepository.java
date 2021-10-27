@@ -2,44 +2,23 @@ package spring.mall.domain.item;
 
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 @Repository
 public class ItemRepository {
 
-    private static final Map<Long, Item> store = new HashMap<>();
-    private static long sequence = 0L;
+    @PersistenceContext
+    EntityManager em;
 
-    public Item save(Item item) {
-        item.setId(++sequence);
-        store.put(item.getId(), item);
-        return item;
+    public Long save(Item item) {
+        em.persist(item);
+
+        return item.getId();
     }
 
-    public Item findById(Long id) {
-        return store.get(id);
+    public Item find(Long id) {
+        return em.find(Item.class, id);
     }
-
-    public List<Item> findAll() {
-        return new ArrayList<>(store.values());
-    }
-
-    public void update(Long itemId, Item updateParam) {
-        Item findItem = findById(itemId);
-
-        findItem.setItemName(updateParam.getItemName());
-        findItem.setContent(updateParam.getContent());
-        findItem.setPrice(updateParam.getPrice());
-        findItem.setQuantity(updateParam.getQuantity());
-        findItem.setState(updateParam.getState());
-    }
-
-    public void clearStore() {
-        store.clear();
-    }
-
 
 }
