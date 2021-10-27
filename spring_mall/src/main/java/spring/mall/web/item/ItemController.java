@@ -2,20 +2,17 @@ package spring.mall.web.item;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import spring.mall.domain.file.FileStore;
+
 import spring.mall.domain.item.Item;
 import spring.mall.domain.item.ItemRepository;
-import spring.mall.domain.item.UploadFile;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
+
 import java.util.List;
 
 @Slf4j
@@ -25,7 +22,7 @@ import java.util.List;
 public class ItemController {
 
     private final ItemRepository itemRepository;
-//    private final FileStore fileStore;
+
 
     @GetMapping
     public String items(Model model) {
@@ -50,8 +47,6 @@ public class ItemController {
 
     @PostMapping("/add")
     public String addItem(@ModelAttribute ItemForm form, RedirectAttributes redirectAttributes) throws IOException {
-//        UploadFile attachFile = fileStore.storeFile(form.getAttachFile());
-//        List<UploadFile> storeImageFiles = fileStore.storeFiles(form.getImageFiles());
 
 
         Item item = new Item();
@@ -60,8 +55,6 @@ public class ItemController {
         item.setPrice(form.getPrice());
         item.setQuantity(form.getQuantity());
         item.setState(form.getState());
-//        item.setAttachFile(attachFile);
-//        item.setImageFiles(storeImageFiles);
         itemRepository.save(item);
 
         redirectAttributes.addAttribute("itemId", item.getId());
@@ -83,10 +76,5 @@ public class ItemController {
         return "redirect:/items/{itemId}";
     }
 
-//    @ResponseBody
-//    @GetMapping("/images/{filename}")
-//    public Resource downloadImage(@PathVariable String filename) throws MalformedURLException {
-//        return new UrlResource("file:" + fileStore.getFullPath(filename));
-//    }
 
 }

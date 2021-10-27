@@ -27,11 +27,14 @@ public class TestDataInit {
     }
 
     @PostConstruct
-    public void itemInit() {
+    public void ItemInit() {
 
-        itemRepository.save(new Item("itemA", "아이템 에이", 10000, 10, "판매중"));
-        itemRepository.save(new Item("itemB", "아이템 비", 20000, 20, "판매중"));
-        itemRepository.save(new Item("itemC", "아이템 씨", 30000, 30, "판매중"));
-        itemRepository.save(new Item("itemD", "아이템 디", 40000, 40, "품절"));
+        itemRepository.save(new Item("Item A", "content A", 10000, 100, "판매중"));
+        itemRepository.save(new Item("Item B", "content B", 20000, 200, "판매중"));
+        itemRepository.save(new Item("Item C", "content C", 30000, 300, "판매중"));
+        itemRepository.save(new Item("Item D", "content D", 40000, 400, "판매중"));
+        itemRepository.save(new Item("Item E", "content E", 50000, 500, "품절"));
+
     }
+
 }

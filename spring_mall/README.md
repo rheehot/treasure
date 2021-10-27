@@ -5,7 +5,7 @@
     <li>개발환경(IDE) : IntelliJ</li>
     <li>JDK 버전 : JDK 11</li>
     <li>스프링 부트 버전 : 2.5.6</li>
-    <li>데이터 베이스: H2 DataBase</li>
+    <li>데이터 베이스: MariaDB</li>
     <li>빌드 툴 : Gradle</li>
     <li>관리 툴 : git,github</li>
 </ul>
@@ -13,8 +13,8 @@
 <h3>프로젝트 기술 스택</h3>
 <ul>
     <li>프론트엔드 : HTML,CSS,BootStrap,Thymeleaf</li>
-    <li>백엔드 : Spring Boot</li>
-    <li>데이터 베이스 : H2</li>
+    <li>백엔드 : Spring Boot, JPA</li>
+    <li>데이터 베이스 : MariaDB</li>
 </ul>
 
 <h3>프로젝트 구현 기능</h3>
