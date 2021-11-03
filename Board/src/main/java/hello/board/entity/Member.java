@@ -2,8 +2,12 @@ package hello.board.entity;
 
 import lombok.*;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Builder
@@ -17,4 +21,15 @@ public class Member extends BaseEntity {
     private String email;
     private String password;
     private String name;
+
+    private boolean fromSocial; // -> 소셜 가입여부
+
+    @ElementCollection(fetch = FetchType.LAZY)
+    @Builder.Default
+    private Set<MemberRole> roleSet = new HashSet<>();
+
+    public void addMemberRole(MemberRole memberRole) {
+        roleSet.add(memberRole);
+    }
+
 }

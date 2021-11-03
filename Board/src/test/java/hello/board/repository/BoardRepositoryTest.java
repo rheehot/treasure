@@ -29,7 +29,7 @@ public class BoardRepositoryTest {
     public void testInsert() {
         IntStream.rangeClosed(1, 100).forEach(i -> {
 
-            Member member = Member.builder().email("user" + i + "gmail.com").build();
+            Member member = Member.builder().email("userName" + i + "@gmail.com").build();
 
             Board board = Board.builder()
                     .title("title" + i)
