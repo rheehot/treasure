@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+
+<div sec:authorize="hasRole('USER')">USER ROLE</div>
+<div sec:authorize="hasRole('ADMIN')">ADMIN ROLE</div>
+
+<div sec:authorize="isAuthenticated()">
+    this Text
+</div>
+
+Authenticatecd username :
+<div sec:authentication="name"></div>
+Authenticated user roles :
+<div sec:authentication="principal.authorities"></div>
+
+</body>
+</html>

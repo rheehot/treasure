@@ -5,9 +5,14 @@
 - Java
 - MariaDB
 - HTML, Thymeleaf
-- SpringBoot, JPA, Hibernate
+- SpringBoot, JPA, Hibernate, Spring Security
 
-### 목표입니다.
+### 목표.
 
 - 게시판 구현
 - 영화 리뷰 구현
+- 스프링 세큐리티를 활용한 로그인 처리
+
+### 공부하자.
+
+
