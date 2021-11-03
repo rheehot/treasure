@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+
+<nav>
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" th:href="@{/introduce/list}">소개</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/board/list}">게시판</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" th:href="@{/movie/list}">구현중</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="http://www.github.com/kimsunho940904">깃허브</a>
+        </li>
+    </ul>
+</nav>
+
+<body>
+<div class="container" style="max-width : 600px;">
+    <div class="pt-5 text-center">
+        <h2>소개</h2>
+    </div>
+    <hr class="my-4">
+
+    <h4>저를 소개합니다.</h4>
+    <ul>
+        <li>안녕하세요. 백엔드 개발자 취업을 희망하는 김선호 입니다.</li>
+        <li>꾸준히 공부하기 위해 1일 1커밋 운동을 하고 있습니다.</li>
+        <li>커피와 카페에 관심이 많습니다.</li>
+    </ul>
+
+    <hr class="my-4">
+
+    <h4>스킬</h4>
+    <ul>
+        <li>Java</li>
+        <li>Oracle,Mysql</li>
+        <li>HTML,Thymeleaf,Javascript,JSP</li>
+        <li>Spring</li>
+    </ul>
+    <hr class="my-4">
+    <h4>자랑거리</h4>
+    <ul>
+        <li>Email : hkkbc123@gmail.com</li>
+        <li>Github : github.com/kimsunho940904</li>
+        <li>Velog : https://velog.io/@kimsunho940904</li>
+    </ul>
+
+
+</div>
+</body>
+</html>
