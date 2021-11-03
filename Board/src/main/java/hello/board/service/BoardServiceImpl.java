@@ -17,6 +17,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 import java.util.function.Function;
 
 @Service
@@ -72,7 +73,6 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public void modify(BoardDTO boardDTO) {
-
         Board board = boardRepository.getOne(boardDTO.getBno());
 
         board.changeTitle(boardDTO.getTitle());

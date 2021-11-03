@@ -4,8 +4,8 @@
 
 - Java
 - MariaDB
-- HTML, Thymeleaf
-- SpringBoot, JPA, Hibernate, Spring Security
+- HTML, CSS, Javascript, Ajax, Bootstrap
+- SpringBoot, JPA, Thymeleaf, Spring Security
 
 ### 목표.
 
