@@ -12,13 +12,18 @@ import java.util.Optional;
 
 @Controller
 @Slf4j
-@RequestMapping("/sample")
+@RequestMapping("/member")
 public class MemberController {
     @GetMapping("/member")
     public String exMember(@AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
         log.info("exMember = {}", authMemberDTO);
 
         return "sample/member";
+    }
+
+    @GetMapping("/modify")
+    public String modify() {
+        return "member/modify";
     }
 
 }

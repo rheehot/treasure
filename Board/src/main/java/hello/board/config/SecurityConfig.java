@@ -1,5 +1,6 @@
 package hello.board.config;
 
+import hello.board.security.handler.LoginSuccessHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,11 +24,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/introduce/list").permitAll()
                 .antMatchers("/board/list").hasRole("USER");
-
         http.formLogin(); //인증 문제시 로그인 화면 뿌림.
         http.csrf().disable(); //CSRF 토큰 비활성화.
 //        http.logout();
-        http.oauth2Login();
+        http.oauth2Login().successHandler(successHandler());
+    }
+
+    @Bean
+    public LoginSuccessHandler successHandler() {
+        return new LoginSuccessHandler(passwordEncoder());
     }
 
 //    @Override

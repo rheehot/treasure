@@ -37,6 +37,14 @@ public class MemberRepositoryTest {
     @Test
     public void insertMembersSecurity() {
 
+//        Member member = Member.builder()
+//                .email("ADMIN")
+//                .name("ADMIN")
+//                .fromSocial(false)
+//                .password(passwordEncoder.encode("1234")).build();
+//
+//        member.addMemberRole(MemberRole.ADMIN);
+
         IntStream.rangeClosed(1, 100).forEach(i -> {
             Member member = Member.builder()
                     .email("user" + i + "@gmail.com")
@@ -60,7 +68,7 @@ public class MemberRepositoryTest {
 
     @Test
     public void testRead() {
-        Optional<Member> result = memberRepository.findByEmail("user90@gmail.com",false);
+        Optional<Member> result = memberRepository.findByEmail("user90@gmail.com", false);
 
         Member member = result.get();
 
