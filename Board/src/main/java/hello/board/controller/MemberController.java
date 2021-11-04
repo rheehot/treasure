@@ -16,7 +16,7 @@ import java.util.Optional;
 public class MemberController {
     @GetMapping("/member")
     public String exMember(@AuthenticationPrincipal AuthMemberDTO authMemberDTO) {
-        log.info("exMember : {}", authMemberDTO);
+        log.info("exMember = {}", authMemberDTO);
 
         return "sample/member";
     }

@@ -1,10 +1,12 @@
-package hello.board.service;
+package hello.board.security.service;
 
 import hello.board.entity.Member;
 import hello.board.entity.MemberRole;
 import hello.board.repository.MemberRepository;
+import hello.board.security.dto.AuthMemberDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
 import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
@@ -13,6 +15,7 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -46,9 +49,22 @@ public class OAuth2UserDetailsService extends DefaultOAuth2UserService {
 
         log.info("EMAIL : {}", email);
 
-        Member member = saveSocialMember(email);
+//        Member member = saveSocialMember(email);
+//
+//        return oAuth2User;
 
-        return oAuth2User;
+        Member member = saveSocialMember(email);
+        AuthMemberDTO memberDTO = new AuthMemberDTO(
+                member.getEmail(),
+                member.getPassword(),
+                true,
+                member.getRoleSet().stream().map(role -> new SimpleGrantedAuthority("ROLE_" + role.name()))
+                        .collect(Collectors.toList()),
+                oAuth2User.getAttributes()
+        );
+        memberDTO.setName(member.getName());
+
+        return memberDTO;
     }
 
 
