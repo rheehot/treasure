@@ -20,12 +20,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/introduce/list").permitAll();
-//                .antMatchers("/board/list").hasRole("ADMIN");
+        http.authorizeRequests()
+                .antMatchers("/introduce/list").permitAll()
+                .antMatchers("/board/list").hasRole("USER");
 
         http.formLogin(); //인증 문제시 로그인 화면 뿌림.
         http.csrf().disable(); //CSRF 토큰 비활성화.
-        http.logout();
+//        http.logout();
+        http.oauth2Login();
     }
 
 //    @Override
