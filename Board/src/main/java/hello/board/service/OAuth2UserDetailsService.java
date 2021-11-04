@@ -68,5 +68,9 @@ public class OAuth2UserDetailsService extends DefaultOAuth2UserService {
                 .build();
 
         member.addMemberRole(MemberRole.USER);
+
+        memberRepository.save(member);
+
+        return member;
     }
 }
