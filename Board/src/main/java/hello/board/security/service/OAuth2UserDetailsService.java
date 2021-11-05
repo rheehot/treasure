@@ -62,7 +62,7 @@ public class OAuth2UserDetailsService extends DefaultOAuth2UserService {
                         .collect(Collectors.toList()),
                 oAuth2User.getAttributes()
         );
-        memberDTO.setName(member.getName());
+        memberDTO.setName(member.getUsername());
 
         return memberDTO;
     }
@@ -78,7 +78,7 @@ public class OAuth2UserDetailsService extends DefaultOAuth2UserService {
 
         //없다면 회원 추가 패스워드는 1234 이름은 이메일 주소
         Member member = Member.builder().email(email)
-                .name(email)
+                .username(email)
                 .password(passwordEncoder.encode("1234"))
                 .fromSocial(true)
                 .build();

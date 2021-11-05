@@ -5,6 +5,7 @@ import hello.board.dto.PageRequestDTO;
 import hello.board.dto.PageResultDTO;
 import hello.board.entity.Board;
 import hello.board.entity.Member;
+import hello.board.security.dto.AuthMemberDTO;
 
 public interface BoardService {
 
@@ -18,10 +19,11 @@ public interface BoardService {
 
     void removeWithReplies(Long bno);
 
-    default Board dtoToEntity(BoardDTO dto) {
 
+    default Board dtoToEntity(BoardDTO dto) {
         Member member = Member.builder().email(dto.getWriterEmail()).build();
 //        Member member = Member.builder().name(dto.getWriterName()).build();
+
 
         Board board = Board.builder()
                 .bno(dto.getBno())
@@ -41,7 +43,7 @@ public interface BoardService {
                 .regDate(board.getRegDate())
                 .updateDate(board.getUpdateDate())
                 .writerEmail(member.getEmail())
-                .writerName(member.getName())
+                .writerName(member.getUsername())
                 .replyCount(replyCount.intValue())
                 .build();
 

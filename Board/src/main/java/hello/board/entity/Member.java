@@ -17,7 +17,7 @@ public class Member extends BaseEntity {
     @Id
     private String email;
     private String password;
-    private String name;
+    private String username;
 
     private boolean fromSocial; // -> 소셜 가입여부
 

@@ -44,7 +44,7 @@ public class UserDetailService implements UserDetailsService {
                         .map(role -> new SimpleGrantedAuthority("ROLE_" + role.name())).collect(Collectors.toSet())
         ); // MemberRole은 스프링 시큐리티에 있는 SimpleGrantedAuthority로 변환.
 
-        authMemberDTO.setName(member.getName());
+        authMemberDTO.setName(member.getUsername());
         authMemberDTO.setFromSocial(member.isFromSocial());
 
         return authMemberDTO;

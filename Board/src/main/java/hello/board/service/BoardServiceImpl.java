@@ -9,6 +9,7 @@ import hello.board.entity.Board;
 import hello.board.entity.Member;
 import hello.board.entity.QBoard;
 import hello.board.repository.BoardRepository;
+import hello.board.repository.MemberRepository;
 import hello.board.repository.ReplyRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +40,7 @@ public class BoardServiceImpl implements BoardService {
         boardRepository.save(board);
 
         return board.getBno();
+
     }
 
 
