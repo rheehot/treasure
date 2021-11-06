@@ -67,7 +67,7 @@ public class OAuth2UserDetailsService extends DefaultOAuth2UserService {
         return memberDTO;
     }
 
-
+    //소셜 회원 처리
     private Member saveSocialMember(String email) {
         //기존 동일한 이메일로 가입한 회원인 경우 그대로 조회만.
         Optional<Member> result = memberRepository.findByEmail(email, true);

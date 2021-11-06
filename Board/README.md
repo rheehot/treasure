@@ -5,13 +5,14 @@
 - Java
 - MariaDB
 - HTML, CSS, Javascript, Ajax, Bootstrap
-- SpringBoot, JPA, Thymeleaf, Spring Security
+- Thymeleaf
+- SpringBoot, JPA, Spring Security
 
 ### 목표.
 
-- 게시판 구현
-- 영화 리뷰 구현
-- 스프링 세큐리티를 활용한 로그인 처리
+- 게시판 글 등록, 수정, 삭제
+- 댓글 등록, 수정, 삭제
+- OAuth2.0을 이용한 로그인
 
 ### 공부하자.
 
