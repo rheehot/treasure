@@ -11,4 +11,13 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     //상품명 찾기
     List<Item> findByItemName(String itemName);
 
+    //상품명 또는 내용으로 찾기
+    List<Item> findByItemNameOrItemDetail(String itemName, String itemDetail);
+
+    //파라미터로 넘어온 price 변수보다 값이 작은 상품 데이터를 조회하는 쿼리
+    List<Item> findByPriceLessThan(Integer price);
+
+    //ORDER BY로 정렬 처리
+    List<Item> findByPriceLessThanOrderByPriceDesc(Integer price);
+
 }
