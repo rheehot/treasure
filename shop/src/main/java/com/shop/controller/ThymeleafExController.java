@@ -86,4 +86,9 @@ public class ThymeleafExController {
         model.addAttribute("itemDtoList", itemDtoList);
         return "thymeleafEx/thymeleafEx05";
     }
+
+    @GetMapping(value = "/ex06")
+    public String thymeleafExample06() {
+        return "thymeleafEx/thymeleafEx06";
+    }
 }
