@@ -27,28 +27,41 @@ public class MemberRepositoryTest {
             Member member = Member.builder()
                     .email("user" + i + "@gmail.com")
                     .password("1234")
-                    .name("user" + i)
+                    .username("user" + i)
                     .build();
+            member.addMemberRole(MemberRole.USER);
 
             memberRepository.save(member);
         });
     }
 
     @Test
+    public void insertMember() {
+        Member member = Member.builder()
+                .email("test@test.com")
+                .password("1234")
+                .username("ADMIN")
+                .build();
+        member.addMemberRole(MemberRole.USER);
+        memberRepository.save(member);
+    }
+
+
+    @Test
     public void insertMembersSecurity() {
 
-//        Member member = Member.builder()
-//                .email("ADMIN")
-//                .name("ADMIN")
-//                .fromSocial(false)
-//                .password(passwordEncoder.encode("1234")).build();
-//
-//        member.addMemberRole(MemberRole.ADMIN);
+        Member member = Member.builder()
+                .email("ADMIN")
+                .username("ADMIN")
+                .fromSocial(false)
+                .password(passwordEncoder.encode("1234")).build();
+
+        member.addMemberRole(MemberRole.ADMIN);
 
         IntStream.rangeClosed(1, 100).forEach(i -> {
-            Member member = Member.builder()
+            Member member1 = Member.builder()
                     .email("user" + i + "@gmail.com")
-                    .name("userName" + i)
+                    .username("userName" + i)
                     .fromSocial(false)
                     .password(passwordEncoder.encode("1234"))
                     .build();

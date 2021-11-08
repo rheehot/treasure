@@ -2,6 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
+    <meta property="og:title" content="선호의 웹"/>
+    <meta property="og:description" content="개인용 웹 페이지"/>
+    <meta property="og:image" content="{{ url_for('static', filename='main.jpg') }}"/>
     <link th:href="@{/css/bootstrap.min.css}"
           href="../css/bootstrap.min.css" rel="stylesheet">
 </head>

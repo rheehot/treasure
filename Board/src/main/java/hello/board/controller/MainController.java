@@ -19,16 +19,5 @@ public class MainController {
     public String index() {
         return "redirect:/login";
     }
-
-//    @RequestMapping("/logout")
-//    public void logout(HttpServletRequest request) {
-//        SecurityContextHolder.getContext().getAuthentication();
-//
-//        String authHeader = request.getHeader("Authorization");
-//
-//        if (authHeader != null) {
-//            authHeader.replace("Bearer", "").trim();
-//        }
-//
-//    }
+    
 }

@@ -100,9 +100,10 @@ public class BoardController {
         redirectAttributes.addAttribute("msg", bno);
 
         return "redirect:/board/list";
-
-
     }
+
+
+
 
 
 }
