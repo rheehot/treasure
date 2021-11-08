@@ -36,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/"); // 로그아웃 성공 시 이동할 URL 설정
 
         http.authorizeRequests() //시큐리티 처리에 HttpSetvletRequest를 이용한다는 의미.
-                .mvcMatchers("/", "members/**", "/item/**", "/images/**").permitAll() //모든 사용자가 접근 가능.
+                .mvcMatchers("/", "/members/**", "/item/**", "/images/**").permitAll() //모든 사용자가 접근 가능.
                 .mvcMatchers("/admin/**").hasRole("ADMIN") //ADMIN 접근 가능.
                 .anyRequest().authenticated(); //설정해준 경로 외 나머지 경로는 모두 인증을 요구.
 
