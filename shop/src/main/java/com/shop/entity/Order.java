@@ -27,7 +27,7 @@ public class Order {
     private LocalDateTime orderDate; //주문일
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus; //주문상태
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true) // 부모 엔티티의 영속성 상태 변화를 자식엔티티에 모두 전이
     // 주문상품 엔티티와 일대 다 매핑. 연관관계 주인 설정. mappedBy = order는 OrderItem 클래스에 있는 Order에 의해 관리된다는 의미.
     private List<OrderItem> orderItems = new ArrayList<>(); // 하나의 주문이 여러 개의 주문 상품을 갖으므로 List 사용.
 
