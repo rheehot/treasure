@@ -26,14 +26,13 @@ public class Board extends BaseEntity {
 
     private String content;
 
-    private String writer;
-
+//    private String writer;
 
     public static Board createBoard(BoardDto boardDto) {
         Board board = new Board();
         board.setTitle(boardDto.getTitle());
         board.setContent(boardDto.getContent());
-        board.setWriter(boardDto.getWriter());
+//        board.setWriter(boardDto.getWriter());
         return board;
     }
 }
