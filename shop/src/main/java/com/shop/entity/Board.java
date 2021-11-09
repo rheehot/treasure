@@ -1,9 +1,14 @@
 package com.shop.entity;
 
 import com.shop.dto.BoardDto;
+import com.shop.dto.MemberFormDto;
+import com.shop.repository.MemberRepository;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.annotation.CreatedBy;
 
 import javax.persistence.*;
 
@@ -11,7 +16,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-@Table(name = "board")
+//@Table(name = "board")
 public class Board extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,7 +31,6 @@ public class Board extends BaseEntity {
 
     public static Board createBoard(BoardDto boardDto) {
         Board board = new Board();
-        Member member = new Member();
         board.setTitle(boardDto.getTitle());
         board.setContent(boardDto.getContent());
         board.setWriter(boardDto.getWriter());

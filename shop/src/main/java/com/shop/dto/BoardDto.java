@@ -1,7 +1,6 @@
 package com.shop.dto;
 
-import com.shop.entity.Board;
-import com.shop.entity.Member;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +15,7 @@ public class BoardDto {
     private String title;
     @NotBlank(message = "내용은 필수 입력 값입니다.")
     private String content;
-
+    @NotBlank(message = "작성자는 필수 입력 값입니다.")
     private String writer;
 
 

@@ -1,9 +1,14 @@
 package com.shop.controller;
 
 import com.shop.dto.ItemFormDto;
+import com.shop.dto.ItemSearchDto;
+import com.shop.entity.Item;
 import com.shop.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -90,5 +96,20 @@ public class ItemController {
         }
 
         return "redirect:/";
+    }
+
+    //value에 상품 관리 화면 진입 시 URL에 페이지 번호가 없는 경우, 페이지 번호가 있는 경우 2가지 매핑.
+    @GetMapping(value = {"/admin/items", "/admin/items/{page}"})
+    public String itemManage(ItemSearchDto itemSearchDto, @PathVariable("page") Optional<Integer> page, Model model) {
+        //페이징을 위해서 PageRequest.of 메소드 사용해서 Pageable 객체 생성. 첫번째 파라미터 : 조회할 페이지 번호, 두번째 파라미터 : 한 번에 가지고 올 데이터 수
+        //페이지 번호가 있으면 해당 페이지를 조회, 페이지 번호가 없으면 0페이지 조회.
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 10);
+        //조회 조건과 페이징 보를 파라미터로 넘겨서 Page<Item> 객체 반환 받기.
+        Page<Item> items = itemService.getAdminItemPage(itemSearchDto, pageable);
+        model.addAttribute("items", items);
+        model.addAttribute("itemSearchDto", itemSearchDto);
+        //페이지 번호 개수 지정.
+        model.addAttribute("maxPage", 5);
+        return "item/itemMng";
     }
 }

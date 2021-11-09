@@ -47,6 +47,7 @@
             <input type="text" th:field="*{writer}" class="form-control" placeholder="작성자를 입력해주세요.">
             <p th:if="${#fields.hasErrors('writer')}" th:errors="*{writer}" class="fieldError">Incorrect data</p>
         </div>
+
         <div style="text-align: center">
             <button type="submit" class="btn btn-primary" style="">Submit</button>
         </div>
