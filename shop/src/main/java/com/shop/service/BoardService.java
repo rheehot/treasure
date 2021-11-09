@@ -20,6 +20,4 @@ public class BoardService {
 //        board.setWriter(board.getCreatedBy());
         return boardRepository.save(board);
     }
-
-
 }

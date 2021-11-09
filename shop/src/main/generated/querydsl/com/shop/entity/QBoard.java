@@ -39,8 +39,6 @@ public class QBoard extends EntityPathBase<Board> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> updateTime = _super.updateTime;
 
-    public final StringPath writer = createString("writer");
-
     public QBoard(String variable) {
         super(Board.class, forVariable(variable));
     }

@@ -12,6 +12,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
     // application.properties에서 설정한 uploadPath 프로퍼티 값 읽어오기.
     @Value("${uploadPath}")
     String uploadPath;
+    @Value("${itemImgLocation}")
+    String itemImgLocation;
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
