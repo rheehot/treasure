@@ -20,10 +20,8 @@ public class BoardServiceTest {
 
     public Board createBoard() {
         BoardDto boardDto = new BoardDto();
-        Member member = new Member();
         boardDto.setTitle("테스트 제목");
         boardDto.setContent("테스트 내용");
-//        boardDto.setWriter(member.getEmail());
         return Board.createBoard(boardDto);
     }
 
@@ -36,7 +34,6 @@ public class BoardServiceTest {
 
         assertEquals(board.getTitle(), savedBoard.getTitle());
         assertEquals(board.getContent(), savedBoard.getContent());
-//        assertEquals(board.getWriter(), savedBoard.getWriter());
     }
 
 
