@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import java.util.List;
@@ -26,11 +27,6 @@ import java.util.Optional;
 public class ItemController {
 
     private final ItemService itemService;
-
-//    @GetMapping(value = "/admin/item/new")
-//    public String itemForm() {
-//        return "/item/itemForm";
-//    }
 
     @GetMapping(value = "/admin/item/new")
     public String itemForm(Model model) {
