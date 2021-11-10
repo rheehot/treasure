@@ -33,6 +33,7 @@ public class ItemImgService {
             //호출 결과 로컬에 저장된 파일의 이름을 imgName에 저장.
             imgName = fileService.uploadFile(itemImgLocation, oriImgName, itemImgFile.getBytes());
             imgUrl = "/images/item/" + imgName;
+
         }
 
         //상품 이미지 정보 저장.

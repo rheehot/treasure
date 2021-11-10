@@ -20,11 +20,51 @@
             });
         });
 
+
         function calculateToalPrice() {
             var count = $("#count").val();
             var price = $("#price").val();
             var totalPrice = price * count;
             $("#totalPrice").html(totalPrice + '원');
+        }
+
+        function order() {
+            //스프링 시큐리티를 이용할 경우, 기본적으로 POST방식엔 CSRF토큰 값이 필요하다.
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+
+            var url = "/order";
+            var paramData = {
+                //주문 할 상품의 아이디와 수량 생성
+                itemId: $("#itemId").val(),
+                count: $("#count").val()
+            };
+            //서버에 보낼 주문 데이터를 JSON 형식으로 변환.
+            var param = JSON.stringify(paramData);
+
+            $.ajax({
+                url: url,
+                type: "POST",
+                contentType: "application/json",
+                data: param,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader(header, token); //csrf 값 설정.
+                },
+                dataType: "json",
+                cache: false,
+                success: function (result, status) {
+                    alert("주문이 완료되었습니다.");
+                    location.href = '/';
+                },
+                error: function (jqXHR, status, error) {
+                    if (jqXHR.status == '401') {
+                        alert('로그인 후 이용해주세요.');
+                        location.href = '/members/login';
+                    } else {
+                        alert(jqXHR.responseText);
+                    }
+                }
+            });
         }
     </script>
 </th:block>
@@ -101,7 +141,7 @@
                 <h3 name="totalPrice" id="totalPrice" class="font-weight-bold"></h3>
             </div>
             <div th:if="${item.itemSellStatus == T(com.shop.constant.ItemSellStatus).SELL}" class="text-right">
-                <button type="button" class="btn btn-light border border-primary btn-lg" onclick="addCart()">장바구니 담기
+                <button type="button" class="btn btn-light border border-primary btn-lg">장바구니 담기
                 </button>
                 <button type="button" class="btn btn-primary btn-lg" onclick="order()">주문하기</button>
             </div>
