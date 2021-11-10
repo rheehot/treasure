@@ -41,5 +41,9 @@ public class OrderItem extends BaseEntity {
         return orderPrice * count; //가격 계산 메소드 (주문가격 * 수량)
     }
 
+    public void cancel() {
+        this.getItem().addStock(count);
+    }
+
 
 }

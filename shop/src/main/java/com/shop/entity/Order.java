@@ -49,6 +49,7 @@ public class Order extends BaseEntity {
         order.setOrderDate(LocalDateTime.now()); //현재 시간을 주문시간으로 세팅.
         return order;
     }
+
     // 총 주문금액 구하는 메소드.
     public int getTotalPrice() {
         int totalPrice = 0;
@@ -56,6 +57,13 @@ public class Order extends BaseEntity {
             totalPrice += orderItem.getTotalPrice();
         }
         return totalPrice;
+    }
+
+    public void cancelOrder() {
+        this.orderStatus = OrderStatus.CANCEL;
+        for (OrderItem orderItem : orderItems) {
+            orderItem.cancel();
+        }
     }
 
 
