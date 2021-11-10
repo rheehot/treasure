@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/board")
@@ -27,7 +28,7 @@ public class BoardController {
     }
 
     @PostMapping(value = "/new")
-    public String newBoard(@Valid BoardDto boardDto, BindingResult bindingResult, Model model) {
+    public String newBoard(@Valid BoardDto boardDto, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "board/boardForm";
         }
@@ -35,4 +36,6 @@ public class BoardController {
         boardService.save(board);
         return "redirect:/";
     }
+
+
 }

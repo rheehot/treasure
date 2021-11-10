@@ -2,6 +2,7 @@ package com.shop.entity;
 
 import com.shop.constant.ItemSellStatus;
 import com.shop.dto.ItemFormDto;
+import com.shop.exception.OutOfStockException;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-public class Item extends BaseEntity{
+public class Item extends BaseEntity {
     @Id
     @Column(name = "item_id")
     @GeneratedValue(strategy = GenerationType.AUTO) // JPA 구현체가 자동으로 생선 전략 결정
@@ -40,5 +41,17 @@ public class Item extends BaseEntity{
         this.itemDetail = itemFormDto.getItemDetail();
         this.itemSellStatus = itemFormDto.getItemSellStatus();
     }
+
+    //재고 감소 로직
+    public void removeStock(int stockNumber) {
+        //상품 재고수량에서 주문 후 남은 재고 수량 구하기.
+        int restStock = this.stockNumber - stockNumber;
+        if (restStock < 0) {
+            throw new OutOfStockException("상품의 재고가 부족합니다. (현재 재고 : " + this.stockNumber + ")");
+        }
+        // 주문 후 남은 재고 수량을 현재 재고 값으로 할당.
+        this.stockNumber = restStock;
+    }
+
 
 }

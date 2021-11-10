@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -28,9 +27,19 @@ public class OrderItem extends BaseEntity {
 
     private int count; // 수량
 
-//    private LocalDateTime regTime; BaseEntity 상속으로 삭제.
-//
-//    private LocalDateTime updateTime; BaseEntity 상속으로 삭제.
+    public static OrderItem createOrderItem(Item item, int count) {
+        OrderItem orderItem = new OrderItem();
+        orderItem.setItem(item); //주문 상품 세팅
+        orderItem.setCount(count); //주문 수량 세팅
+        orderItem.setOrderPrice(item.getPrice());
+
+        item.removeStock(count); //주문 사량만큼 재고 감소.
+        return orderItem;
+    }
+
+    public int getTotalPrice() {
+        return orderPrice * count; //가격 계산 메소드 (주문가격 * 수량)
+    }
 
 
 }

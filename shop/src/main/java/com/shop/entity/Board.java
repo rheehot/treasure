@@ -33,7 +33,6 @@ public class Board extends BaseEntity {
         Board board = new Board();
         board.setTitle(boardDto.getTitle());
         board.setContent(boardDto.getContent());
-//        board.setWriter(boardDto.getWriter());
         return board;
     }
 }
