@@ -53,6 +53,7 @@ public class CartController {
         return "cart/cartList";
     }
 
+    //PatchMapping ?? 요청된 자원의 일부를 업데이트할때 사용.
     @PatchMapping(value = "/cartItem/{cartItemId}")
     public @ResponseBody
     ResponseEntity updateCartItem(@PathVariable("cartItemId") Long cartItemId, int count, Principal principal) {
@@ -63,6 +64,16 @@ public class CartController {
             return new ResponseEntity<String>("수정 권한이 없습니다.", HttpStatus.BAD_REQUEST);
         }
         cartService.updateCartItemCount(cartItemId, count);
+        return new ResponseEntity<Long>(cartItemId, HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/cartItem/{cartItemId}")
+    public @ResponseBody
+    ResponseEntity deleteCartItem(@PathVariable("cartItemId") Long cartItemId, Principal principal) {
+        if (!cartService.validateCartItem(cartItemId, principal.getName())) {
+            return new ResponseEntity<String>("수정 권한이 없습니다.", HttpStatus.BAD_REQUEST);
+        }
+        cartService.deleteCartItem(cartItemId);
         return new ResponseEntity<Long>(cartItemId, HttpStatus.OK);
     }
 }
