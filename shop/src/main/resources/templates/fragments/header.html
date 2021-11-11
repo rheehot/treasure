@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta property="og:title" content="선호의 웹"/>
+    <meta property="og:description" content="개인용 웹 페이지"/>
+    <meta property="og:image" content="{{ url_for('static', filename='bannder_img.jpeg') }}"/>
+</head>
 
 <div th:fragment="header">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
