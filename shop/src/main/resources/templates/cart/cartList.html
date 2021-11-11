@@ -111,6 +111,51 @@
                 }
             });
         }
+
+        function orders() {
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+
+            var url = '/cart/orders';
+
+            var dataList = new Array();
+            var paramData = new Object();
+            //체크된 장바구니 상품 아이디 전달받기 위한용도.
+            $("input[name=cartChkBox]:checked").each(function () {
+                var cartItemId = $(this).val();
+                var data = new Object();
+                data["cartItemId"] = cartItemId;
+                dataList.push(data);
+            });
+            //장바구니 상품 아이디를 저장하고 있는 dataList배열을 paramData객체에 추가
+            paramData['cartOrderDtoList'] = dataList;
+
+            var param = JSON.stringify(paramData);
+
+            $.ajax({
+                url: url,
+                type: "POST",
+                contentType: "application/json",
+                data: param,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader(header, token);
+                },
+                dataType: "json",
+                cache: false,
+                success: function (result, status) {
+                    alert("주문이 완료되었습니다.");
+                    location.href = '/orders';
+                },
+                error: function (jqXHR, status, error) {
+                    if (jqXHR == '401') {
+                        alert('로그인 후 이용해주세요.');
+                        location.href = '/members/login';
+                    } else {
+                        alert(jqXHR.responseJSON.message);
+                    }
+                }
+            });
+        }
     </script>
 </th:block>
 

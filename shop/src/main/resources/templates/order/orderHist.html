@@ -120,7 +120,8 @@
                     <span th:text="${orderItem.itemName}" class="fs24 font-weight-bold"></span>
                     <div class="fs18 font-weight-light">
                         <span th:text="${orderItem.orderPrice} +'원'"></span>
-                        <span th:text="${orderItem.count} +'개'"></span>
+                        <span th:text="${orderItem.count} +'개'"></span><br>
+                        <span th:text="'합계 : ' + ${orderItem.totalPrice} + '원'"></span>
                     </div>
                 </div>
             </div>

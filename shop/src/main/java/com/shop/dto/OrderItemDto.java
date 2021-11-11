@@ -14,6 +14,7 @@ public class OrderItemDto {
         this.count = orderItem.getCount();
         this.orderPrice = orderItem.getOrderPrice();
         this.imgUrl = imgUrl;
+        this.totalPrice = count * orderPrice;
     }
 
     private String itemName; //상품명
@@ -23,5 +24,7 @@ public class OrderItemDto {
     private int orderPrice; //주문 금액
 
     private String imgUrl; //상품 이미지 경로
+
+    private int totalPrice; //총합금액
 
 }
