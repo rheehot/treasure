@@ -29,4 +29,9 @@ public class MainController {
         return "main";
     }
 
+    @GetMapping("/about/list")
+    public String list() {
+        return "about/list";
+    }
+
 }
