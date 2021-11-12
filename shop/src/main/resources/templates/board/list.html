@@ -7,6 +7,9 @@
 <div layout:fragment="content">
     <!--/* 게시글 영역 */-->
     <div class="table-responsive clearfix">
+        <div class="btn_wrap text-right">
+            <a th:href="@{/board/post}" class="btn btn-secondary">글쓰기</a>
+        </div>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -25,14 +28,11 @@
                 </td>
                 <td th:text="${board.title}"></td>
                 <td th:text="${board.createdBy}"></td>
-                <td th:text="${board.regTime}"></td>
-                <td th:text="${board.updateTime}"></td>
+                <td th:text="${#temporals.format(board.regTime,'yyyy-MM-dd HH:mm')}"></td>
+                <td th:text="${#temporals.format(board.updateTime,'yyyy-MM-dd HH:mm')}"></td>
             </tr>
             </tbody>
         </table>
-        <div class="btn_wrap text-right">
-            <a th:href="@{/board/post}" class="btn btn-secondary">글쓰기</a>
-        </div>
     </div>
 </div>
 </html>
