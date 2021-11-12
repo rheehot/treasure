@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+
+<div layout:fragment="content">
+    <!--/* 게시글 영역 */-->
+    <div class="table-responsive clearfix">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>등록일</th>
+                <th>수정일</th>
+            </tr>
+            </thead>
+            <!--/* 게시글 리스트 Rendering 영역 */-->
+            <tbody>
+            <tr th:each="board,status:${list}">
+                <td>
+                    <a th:href="@{'/board/post/' + ${board.id}}" th:text="${board.id}"></a>
+                </td>
+                <td th:text="${board.title}"></td>
+                <td th:text="${board.createdBy}"></td>
+                <td th:text="${board.regTime}"></td>
+                <td th:text="${board.updateTime}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="btn_wrap text-right">
+            <a th:href="@{/board/post}" class="btn btn-secondary">글쓰기</a>
+        </div>
+    </div>
+</div>
+</html>

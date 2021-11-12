@@ -1,34 +1,32 @@
 package com.shop.entity;
 
+import com.shop.dto.BoardFormDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.modelmapper.ModelMapper;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
+@Table(name = "board")
+@NoArgsConstructor
 public class Board extends BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "board_id")
+    @GeneratedValue
     private Long id;
-
     private String title;
-
     private String content;
 
-    private char deleteYn;
 
-    @Builder //생성자를 대신하는 놈.
-    public Board(String title, String content, char deleteYn) {
+    @Builder
+    public Board(Long id, String title, String content) {
+        this.id = id;
         this.title = title;
         this.content = content;
-        this.deleteYn = deleteYn;
     }
 }
