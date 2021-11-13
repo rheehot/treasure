@@ -1,9 +1,11 @@
 package com.shop.service;
 
+import com.amazonaws.services.s3.AmazonS3;
 import com.shop.entity.ItemImg;
 import com.shop.repository.ItemImgRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,7 +16,9 @@ import javax.persistence.EntityNotFoundException;
 @Service
 @Transactional
 @RequiredArgsConstructor
+@Component
 public class ItemImgService {
+
     @Value("${itemImgLocation}")
     private String itemImgLocation;
 
