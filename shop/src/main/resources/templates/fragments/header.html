@@ -4,7 +4,7 @@
 <head>
     <meta property="og:title" content="선호의 웹"/>
     <meta property="og:description" content="개인용 웹 페이지"/>
-    <meta property="og:image" content="{{ url_for('static', filename='bannder_img.jpeg') }}"/>
+    <!--    <meta property="og:image" content="/static/banner_img.jpeg"/>-->
 </head>
 
 <div th:fragment="header" id="header">
@@ -14,39 +14,39 @@
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="/">SHOP</a>
+        <a class="navbar-brand" href="/">쇼핑몰</a>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="/about/list">ABOUT US</a>
+                    <a class="nav-link" href="/about/list">소개</a>
                 </li>
                 <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"> <!-- 관리자 권한 -->
-                    <a class="nav-link" href="/admin/item/new">PRODUCT REGISTER</a>
+                    <a class="nav-link" href="/admin/item/new">상품등록</a>
                 </li>
                 <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')"> <!-- 관리자 권한 -->
-                    <a class="nav-link" href="/admin/items">PRODUCT MGT</a>
+                    <a class="nav-link" href="/admin/items">상품관리</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()"> <!-- 로그인 했을 경우에만 출력 -->
-                    <a class="nav-link" href="/cart">SHOPPING BAG</a>
+                    <a class="nav-link" href="/cart">장바구니</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()"> <!-- 로그인 했을 경우에만 출력 -->
-                    <a class="nav-link" href="/orders">PURCHASE HISTORY</a>
+                    <a class="nav-link" href="/orders">구매내역</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()"> <!-- 로그인 했을 경우에만 게시판 출력 -->
-                    <a class="nav-link" href="/board/list">BOARD</a>
+                    <a class="nav-link" href="/board/list">게시판</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAnonymous()"> <!-- 로그인 하지 않은 상태이면, 로그인 메뉴 출력 -->
-                    <a class="nav-link" href="/members/login">LOGIN</a>
+                    <a class="nav-link" href="/members/login">로그인</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()"> <!-- 로그인 한 상태이면, 로그아웃 메뉴 출력 -->
-                    <a class="nav-link" href="/members/logout">LOGOUT</a>
+                    <a class="nav-link" href="/members/logout">로그아웃</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">
                 <input name="searchQuery" class="form-control mr-sm-2" type="search" placeholder=""
                        aria-label="Search">
-                <button class="btn btn-default" type="submit">SEARCH</button>
+                <button class="btn btn-default" type="submit">검색</button>
             </form>
         </div>
     </nav>

@@ -50,4 +50,10 @@ public class BoardService {
         boardRepository.deleteById(id);
     }
 
+//    //페이징
+//    @Transactional(readOnly = true)
+//    public Page<Board> boardPage(BoardFormDto boardFormDto, Pageable pageable) {
+//        return boardRepository.getBoardPage(boardFormDto, pageable);
+//    }
+
 }
