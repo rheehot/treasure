@@ -1,6 +1,5 @@
 package com.shop.service;
 
-import com.amazonaws.services.s3.AmazonS3;
 import com.shop.entity.ItemImg;
 import com.shop.repository.ItemImgRepository;
 import lombok.RequiredArgsConstructor;
