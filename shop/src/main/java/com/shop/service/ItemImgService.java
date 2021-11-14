@@ -18,6 +18,7 @@ import javax.persistence.EntityNotFoundException;
 @Component
 public class ItemImgService {
 
+
     @Value("${itemImgLocation}")
     private String itemImgLocation;
 

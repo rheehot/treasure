@@ -1,5 +1,6 @@
 package com.shop.service;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,7 @@ import java.util.UUID;
 
 @Service
 @Log
+@RequiredArgsConstructor
 public class FileService {
 
     public String uploadFile(String uploadPath, String originalFileName, byte[] fileData) throws Exception {

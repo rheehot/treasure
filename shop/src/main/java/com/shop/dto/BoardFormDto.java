@@ -20,6 +20,8 @@ public class BoardFormDto {
     @NotBlank(message = "내용은 필수 입력 값입니다.")
     private String content;
 
+    private String name;
+
     public Board toEntity() {
         Board build = Board.builder()
                 .id(id)
