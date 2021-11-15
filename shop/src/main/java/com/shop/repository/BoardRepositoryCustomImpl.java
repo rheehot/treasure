@@ -3,7 +3,6 @@ package com.shop.repository;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.shop.dto.BoardFormDto;
 import com.shop.dto.BoardSearchDto;
 import com.shop.entity.Board;
 import com.shop.entity.QBoard;
