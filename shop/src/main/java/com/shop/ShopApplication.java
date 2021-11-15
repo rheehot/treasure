@@ -11,20 +11,21 @@ import org.springframework.web.filter.HiddenHttpMethodFilter;
 @SpringBootApplication
 public class ShopApplication extends SpringBootServletInitializer {
 
+    public static final String APPLICATION_LOCATIONS = "spring.config.location="
+            + "classpath:application.properties,"
+            + "classpath:aws.yml";
+
     public static void main(String[] args) {
         new SpringApplicationBuilder(ShopApplication.class)
                 .properties(APPLICATION_LOCATIONS)
                 .run(args);
-        SpringApplication.run(ShopApplication.class, args);
+
+//        SpringApplication.run(ShopApplication.class, args);
     }
 
     @Bean
     public HiddenHttpMethodFilter hiddenHttpMethodFilter() {
         return new HiddenHttpMethodFilter();
     }
-
-    public static final String APPLICATION_LOCATIONS = "spring.config.location="
-            + "classpath:application.yml,"
-            + "classpath:aws.yml";
 
 }

@@ -4,6 +4,7 @@ import com.shop.dto.ItemFormDto;
 import com.shop.dto.ItemSearchDto;
 import com.shop.entity.Item;
 import com.shop.service.ItemService;
+import com.shop.service.S3Uploader;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,14 +12,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +26,7 @@ import java.util.Optional;
 public class ItemController {
 
     private final ItemService itemService;
+    
 
     @GetMapping(value = "/admin/item/new")
     public String itemForm(Model model) {
@@ -113,4 +113,5 @@ public class ItemController {
         model.addAttribute("item", itemFormDto);
         return "item/itemDtl";
     }
+
 }

@@ -16,7 +16,6 @@ import java.util.Optional;
 @Controller
 @RequiredArgsConstructor
 public class MainController {
-
     private final ItemService itemService;
 
     @GetMapping("/")
@@ -33,5 +32,8 @@ public class MainController {
     public String list() {
         return "about/list";
     }
+
+
+
 
 }

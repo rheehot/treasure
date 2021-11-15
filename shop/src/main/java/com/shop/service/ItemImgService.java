@@ -1,9 +1,12 @@
 package com.shop.service;
 
-import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.shop.entity.ItemImg;
 import com.shop.repository.ItemImgRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -12,19 +15,31 @@ import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.util.StringUtils;
 
 import javax.persistence.EntityNotFoundException;
+import java.io.File;
+import java.util.UUID;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
 @Component
+@Slf4j
 public class ItemImgService {
+
+    private final AmazonS3Client amazonS3Client;
+
+    @Value("${cloud.aws.s3.bucket}")
+    public String bucket;  // S3 버킷 이름
 
     @Value("${itemImgLocation}")
     private String itemImgLocation;
 
+//    @Value("${cloud.aws.s3.bucket}")
+//    private String itemImgLocation;
+
     private final ItemImgRepository itemImgRepository;
 
     private final FileService fileService;
+
 
     public void saveItemImg(ItemImg itemImg, MultipartFile itemImgFile) throws Exception {
         String oriImgName = itemImgFile.getOriginalFilename();

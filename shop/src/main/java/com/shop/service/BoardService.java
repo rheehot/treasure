@@ -3,7 +3,9 @@ package com.shop.service;
 
 import com.shop.dto.BoardFormDto;
 import com.shop.entity.Board;
+import com.shop.entity.Member;
 import com.shop.repository.BoardRepository;
+import com.shop.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,6 +23,7 @@ import java.util.Optional;
 public class BoardService {
 
     private final BoardRepository boardRepository;
+    private final MemberRepository memberRepository;
 
     @Transactional
     public Long savePost(BoardFormDto boardFormDto) {
@@ -33,6 +36,7 @@ public class BoardService {
 
     @Transactional
     public BoardFormDto getPost(Long id) {
+        Member member = (Member) memberRepository.findAll();
         Optional<Board> boardWrapper = boardRepository.findById(id);
         Board board = boardWrapper.get();
 
