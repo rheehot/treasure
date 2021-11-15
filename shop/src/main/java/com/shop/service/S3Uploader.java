@@ -67,8 +67,4 @@ public class S3Uploader {
 
         return Optional.empty();
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> bd9a53ebf4e9fa5eb8a0b1cc1b65485ae33496ca
