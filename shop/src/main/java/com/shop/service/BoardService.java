@@ -2,6 +2,7 @@ package com.shop.service;
 
 
 import com.shop.dto.BoardFormDto;
+import com.shop.dto.BoardSearchDto;
 import com.shop.entity.Board;
 import com.shop.entity.Member;
 import com.shop.repository.BoardRepository;
@@ -36,7 +37,7 @@ public class BoardService {
 
     @Transactional
     public BoardFormDto getPost(Long id) {
-        Member member = (Member) memberRepository.findAll();
+        List<Member> member = memberRepository.findAll();
         Optional<Board> boardWrapper = boardRepository.findById(id);
         Board board = boardWrapper.get();
 
@@ -54,10 +55,10 @@ public class BoardService {
         boardRepository.deleteById(id);
     }
 
-//    //페이징
-//    @Transactional(readOnly = true)
-//    public Page<Board> boardPage(BoardFormDto boardFormDto, Pageable pageable) {
-//        return boardRepository.getBoardPage(boardFormDto, pageable);
-//    }
+    //페이징
+    @Transactional(readOnly = true)
+    public Page<Board> boardPage(BoardSearchDto boardSearchDto, Pageable pageable) {
+        return boardRepository.getBoardPage(boardSearchDto, pageable);
+    }
 
 }
