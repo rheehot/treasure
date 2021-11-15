@@ -23,17 +23,10 @@ import javax.persistence.EntityNotFoundException;
 @Slf4j
 public class ItemImgService {
 
-    private final AmazonS3Client amazonS3Client;
-
-    @Value("${cloud.aws.s3.bucket}")
-    public String bucket;  // S3 버킷 이름
-
 
     @Value("${itemImgLocation}")
     private String itemImgLocation;
 
-//    @Value("${cloud.aws.s3.bucket}")
-//    private String itemImgLocation;
 
     private final ItemImgRepository itemImgRepository;
 
