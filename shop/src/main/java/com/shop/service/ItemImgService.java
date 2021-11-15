@@ -1,8 +1,11 @@
 package com.shop.service;
 
+<<<<<<< HEAD
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+=======
+>>>>>>> bd9a53ebf4e9fa5eb8a0b1cc1b65485ae33496ca
 import com.shop.entity.ItemImg;
 import com.shop.repository.ItemImgRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,10 +28,13 @@ import java.util.UUID;
 @Slf4j
 public class ItemImgService {
 
+<<<<<<< HEAD
     private final AmazonS3Client amazonS3Client;
 
     @Value("${cloud.aws.s3.bucket}")
     public String bucket;  // S3 버킷 이름
+=======
+>>>>>>> bd9a53ebf4e9fa5eb8a0b1cc1b65485ae33496ca
 
     @Value("${itemImgLocation}")
     private String itemImgLocation;
