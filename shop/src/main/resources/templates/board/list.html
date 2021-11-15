@@ -21,7 +21,7 @@
             location.href = "/board/list/" + page
                 + "?searchDateType=" + searchDateType
                 + "&searchBy=" + searchBy
-                + "&searchQuery=" + searchQuery
+                + "&searchQuery=" + searchQuery;
         }
     </script>
 </th:block>
@@ -29,7 +29,7 @@
 
 <div layout:fragment="content">
     <!--/* 게시글 영역 */-->
-    <form th:action="@{'/board/list/' + ${board.number}}" role="form" method="get" th:object="${board}">
+    <form th:action="@{'/board/list/' + ${list.number}}" role="form" method="get" th:object="${list}">
         <div class="table-responsive clearfix">
             <div class="btn_wrap text-right">
                 <a th:href="@{/board/post}" class="btn btn-secondary">글쓰기</a>
@@ -46,40 +46,45 @@
                 </thead>
                 <!--/* 게시글 리스트 Rendering 영역 */-->
                 <tbody>
-                <tr th:each="board,status:${board.getContent()}">
+                <tr th:each="list,status:${list.getContent()}">
                     <td>
-                        <a th:href="@{'/board/post/' + ${board.id}}" th:text="${board.id}"></a>
+                        <a th:href="@{'/board/post/' + ${list.id}}" th:text="${list.id}"></a>
                     </td>
-                    <td th:text="${board.title}"></td>
-                    <td th:text="${board.createdBy}"></td>
-                    <td th:text="${#temporals.format(board.regTime,'yyyy-MM-dd HH:mm')}"></td>
-                    <td th:text="${#temporals.format(board.updateTime,'yyyy-MM-dd HH:mm')}"></td>
+                    <td th:text="${list.title}"></td>
+                    <td th:text="${list.createdBy}"></td>
+                    <td th:text="${#temporals.format(list.regTime,'yyyy-MM-dd HH:mm')}"></td>
+                    <td th:text="${#temporals.format(list.updateTime,'yyyy-MM-dd HH:mm')}"></td>
                 </tr>
                 </tbody>
             </table>
         </div>
 
-        <div th:with="start=${(board.number/maxPage)*maxPage + 1},
-        end=(${(board.totalPages == 0) ? 1 : (start + (maxPage - 1)
-        < board.totalPages ? start + (maxPage - 1) : board.totalPages)})">
+        <!-- 하단 페이지 번호 영역. -->
+        <!-- with = 변수값을 정의할 때 사용. -->
+        <!-- start = (현재 페이지 번호/보여줄 페이지 수) + 1 -->
+        <!-- end = start + (보여줄 페이지 수 -1) -->
+        <div th:with="start=${(list.number/maxPage)*maxPage + 1},
+        end=(${(list.totalPages == 0) ? 1 : (start + (maxPage - 1)
+        < list.totalPages ? start + (maxPage - 1) : list.totalPages)})">
             <ul class="pagination justify-content-center">
-
-                <li class="page-item" th:classappend="${board.first}?'disabled'">
-                    <a th:onclick="'javascript:page(' + ${board.number - 1} + ')'" aria-label='Previous'
-                       class="page-link">
-                        <span aria-hidden='true'>Previous</span>
+                <!-- 첫 번째 페이지면, Previous 버튼을 disabled -->
+                <li class="page-item" th:classappend="${list.first}?'disabled'">
+                    <a th:onclick="'javascript:page(' + ${list.number - 1} + ')'" aria-label='Previous'
+                       class="page-link"> <!-- Previous 버튼 클릭 시 현재 페이지에서 이전 페이지로 이동하는 page 함수를 호출. -->
+                        <span aria-hidden='true'>이전</span>
                     </a>
                 </li>
 
                 <li class="page-item" th:each="page: ${#numbers.sequence(start, end)}"
-                    th:classappend="${board.number eq page-1}?'active':''">
-                    <a th:onclick="'javascript:page(' + ${page - 1} + ')'" th:inline="text"
-                       class="page-link">[[${page}]]</a>
+                    th:classappend="${list.number eq page-1}?'active':''"> <!-- 현재 페이지이면 active 클래스 추가. -->
+                    <!-- 페이지 번호 클릭 시 해당 페이지로 이동하도록 page 함수 호출. -->
+                    <a th:onclick="'javascript:page(' + ${page - 1} + ')'" th:inline="text" class="page-link">[[${page}]]</a>
                 </li>
-
-                <li class="page-item" th:classappend="${board.last}?'disabled'">
-                    <a th:onclick="'javascript:page(' + ${board.number + 1} + ')'" aria-label='Next' class="page-link">
-                        <span aria-hidden='true'>Next</span>
+                <!-- 마지막 페이지 일 경우, Next = disabled 처리 -->
+                <li class="page-item" th:classappend="${list.last}?'disabled'">
+                    <!-- Next 버튼 클릭 시 현재 페이지에서 다음 페이지로 이동하도록 page 함수를 호출. -->
+                    <a th:onclick="'javascript:page(' + ${list.number + 1} + ')'" aria-label='Next' class="page-link">
+                        <span aria-hidden='true'>다음</span>
                     </a>
                 </li>
 
@@ -95,12 +100,14 @@
                 <option value="6m">6개월</option>
             </select>
             <select th:field="*{searchBy}" class="form-control" style="width:auto;">
-                <option value="title">제목</option>
+                <option value="t">제목</option>
                 <option value="createdBy">등록자</option>
             </select>
             <input th:field="*{searchQuery}" type="text" class="form-control" placeholder="검색어를 입력해주세요">
-            <button id="searchBtn" type="submit" class="btn btn-primary">검색</button>
+            <button id="searchBtn" type="submit" class="btn btn-secondary">검색</button>
         </div>
     </form>
+
 </div>
+
 </html>

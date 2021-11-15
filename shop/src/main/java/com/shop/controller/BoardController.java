@@ -86,10 +86,10 @@ public class BoardController {
     @GetMapping(value = {"/list", "/list/{page}"})
     public String BoardManage(BoardSearchDto boardSearchDto, @PathVariable("page") Optional<Integer> page, Model model) {
 //        List<Board> list = boardService.getList();
-        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 3);
-        Page<Board> board = boardService.boardPage(boardSearchDto, pageable);
+        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 10);
+        Page<Board> list = boardService.boardPage(boardSearchDto, pageable);
 //        model.addAttribute("list", list);
-        model.addAttribute("board", board); //조회한 보드 데이터 및 페이징 정보를 뷰에 전달.
+        model.addAttribute("list", list); //조회한 보드 데이터 및 페이징 정보를 뷰에 전달.
         model.addAttribute("boardSearchDto", boardSearchDto); //페이지 전환 시 기존 검색 조건을 유지한 채 이동할 수 있도록 뷰에 전달.
         model.addAttribute("maxPage", 5); //페이지 번호 최대 개수
 
