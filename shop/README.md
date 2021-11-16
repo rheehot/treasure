@@ -18,6 +18,17 @@
 ### ERD 다이어그램
 ![스크린샷 2021-11-16 오전 10 54 20](https://user-images.githubusercontent.com/63573287/141881480-7835fd75-0787-4295-aa0e-f06682aae041.png)
 
+### 화면 구성
+![스크린샷 2021-11-16 오후 12 41 25](https://user-images.githubusercontent.com/63573287/141891809-a90de0a2-73a4-4b7d-975b-1e95adc27464.png)
+
+![스크린샷 2021-11-16 오후 12 41 52](https://user-images.githubusercontent.com/63573287/141891996-bd035c1b-7e3a-44e2-b24c-064941e5b7cf.png)
+
+![스크린샷 2021-11-16 오후 12 43 20](https://user-images.githubusercontent.com/63573287/141891999-36cad1cf-1193-4a8e-be85-73b1fbfa2d2e.png)
+
+![스크린샷 2021-11-16 오후 12 43 30](https://user-images.githubusercontent.com/63573287/141892003-0b0c1002-8b0b-48c1-bf07-6132806aad8b.png)
+
+![스크린샷 2021-11-16 오후 12 43 40](https://user-images.githubusercontent.com/63573287/141892007-f86bb79b-4ae3-4c79-865a-e60c7930dc8f.png)
+
 
 ### 구현 기능
 #### 공통 기능
