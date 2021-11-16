@@ -13,10 +13,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class BoardFormDto {
     private Long id;
-    @Column(nullable = false)
     @NotBlank(message = "제목은 필수 입력 값입니다.")
     private String title;
-    @Column(nullable = false)
     @NotBlank(message = "내용은 필수 입력 값입니다.")
     private String content;
 
