@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<!-- 사용자 CSS 추가 -->
+<th:block layout:fragment="css">
+    <style>
+        .carousel-inner > .item {
+            height: 350px;
+        }
+
+        .margin {
+            margin-bottom: 30px;
+        }
+
+        /*.banner {*/
+        /*    height: 300px;*/
+        /*    position: absolute;*/
+        /*    top: 0;*/
+        /*    left: 0;*/
+        /*    width: 100%;*/
+        /*    height: 70%;*/
+        /*}*/
+
+        .card-text {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+</th:block>
+
+<div layout:fragment="content">
+
+    <div id="map" style="width:100%; height:800px;">
+        <script type="text/javascript"
+                src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a2ce9f77bffc6bf44da3cc3a64b45f21"></script>
+        <script>
+            var container = document.getElementById('map');
+            var options = {
+                center: new kakao.maps.LatLng(37.500369, 126.848096),
+                level: 3
+            };
+            var map = new kakao.maps.Map(container, options);
+        </script>
+    </div>
+
+</div>
+</html>
