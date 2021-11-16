@@ -8,6 +8,13 @@
 5. 데이터베이스 : MariaDB
 6. 빌드 툴 : Gradle
 
+### 사용 기술
+1. Java
+2. MariaDB
+3. HTML, CSS, Javascript, Bootstrap
+4. Thymeleaf
+5. SpringBoot, SpringSecurity, JPA
+
 ### ERD 다이어그램
 ![스크린샷 2021-11-16 오전 10 54 20](https://user-images.githubusercontent.com/63573287/141881480-7835fd75-0787-4295-aa0e-f06682aae041.png)
 
