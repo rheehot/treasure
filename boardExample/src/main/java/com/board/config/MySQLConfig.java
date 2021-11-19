@@ -10,8 +10,16 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 import javax.sql.DataSource;
 
+/**
+ * SqlSessionFactory : MySQL과 MyBatis를 연결해주는 객체
+ * SqlSessionFactoryBean : SqlSessionFactory를 생성해주는 클래스
+ * setDataSource() : datasource를 참조하게 한다.
+ * PathMatchingResourcePatternResolver : resource 위치 검색을 돕는 SpringClass
+ * getResources()로 경로 검색을 해 SqlSessionFactory에 mapper,mybatis-config를 set 해준다.
+ * classpath : resource 폴더를 나타낸다.
+ */
 @Configuration
-@MapperScan("com.board.dao") // 연결할 DAO
+@MapperScan("com.board.dao") // 연결할 DAO 인터페이스를 담은 패키지를 등록.
 public class MySQLConfig {
 
     @Bean
