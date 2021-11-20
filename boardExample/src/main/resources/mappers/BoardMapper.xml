@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.board.dao.BoardDAO">
+    <select id="boardList" resultType="com.board.dto.BoardDTO">
+        <![CDATA[
+        SELECT bno, title, regDate, updateDate
+        FROM board
+        ORDER BY bno DESC
+        ]]>
+    </select>
+
+    <select id="detail" resultType="com.board.dto.BoardDTO">
+        SELECT *
+        FROM board
+        WHERE bno = #{bno}
+    </select>
+</mapper>
