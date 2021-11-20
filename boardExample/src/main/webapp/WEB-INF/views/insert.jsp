@@ -35,8 +35,17 @@
 </head>
 <body>
 <div class="container">
-
+    <form role="form" action="/insert" method="post">
+        <label>title</label>
+        <input type="text" class="form-control" name="title">
+        <label>content</label>
+        <input type="text" class="form-control" name="content">
+        <label>writer</label>
+        <input type="text" class="form-control" name="writer">
+        <button type="submit" class="btn btn-secondary">저장</button>
+        <button type="button" class="btn btn-secondary" onclick="location.href='/list'">목록으로</button>
+    </form>
 </div>
-${detail}
+
 </body>
 </html>

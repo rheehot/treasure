@@ -22,4 +22,19 @@ public class BoardServiceImpl implements BoardService {
     public BoardDTO detail(Long bno) throws Exception {
         return boardDAO.detail(bno);
     }
+
+    @Override
+    public boolean update(BoardDTO boardDTO) throws Exception {
+        return boardDAO.update(boardDTO) == 1;
+    }
+
+    @Override
+    public boolean delete(Long bno) throws Exception {
+        return boardDAO.delete(bno) == 1;
+    }
+
+    @Override
+    public void insert(BoardDTO boardDTO) throws Exception {
+        boardDAO.insert(boardDTO);
+    }
 }

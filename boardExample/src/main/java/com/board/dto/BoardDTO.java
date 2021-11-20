@@ -3,14 +3,15 @@ package com.board.dto;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 public class BoardDTO {
 
-    private String bno;
+    private Long bno;
     private String title;
     private String content;
     private String writer;
-    private LocalDateTime regDate;
-    private LocalDateTime updateDate;
+    private Date regDate;
+    private Date updateDate;
 }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: kimsunho
@@ -35,8 +36,30 @@
 </head>
 <body>
 <div class="container">
+    <div class="form-group">
+        <label>bno</label>
+        <input type="text" class="form-control" name="bno" value='<c:out value="${detail.bno}"/>' readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label>title</label>
+        <input type="text" class="form-control" name="title" value='<c:out value="${detail.title}"/>'
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label>content</label>
+        <input type="text" class="form-control" name="content" value='<c:out value="${detail.content}"/>'
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label>writer</label>
+        <input type="text" class="form-control" name="writer" value='<c:out value="${detail.writer}"/>'
+               readonly="readonly">
+    </div>
 
+    <button type="button" class="btn btn-secondary"
+            onclick="location.href='/update/<c:out value="${detail.bno}"/>'">수정
+    </button>
+    <button type="button" class="btn btn-secondary" onclick="location.href='/list'">목록으로</button>
 </div>
-${detail}
 </body>
 </html>

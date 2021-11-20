@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: kimsunho
@@ -35,7 +37,29 @@
 </head>
 <body>
 <div class="container">
-    ${list}
+
+    <button type="button" style="float: right" onclick="location.href='insert'">등록</button>
+
+    <table class="table table-stripe">
+        <thead>
+        <tr>
+            <th>bno</th>
+            <th>title</th>
+            <th>regdate</th>
+            <th>updateDate</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${list}" var="BoardDTO">
+            <tr>
+                <td>${BoardDTO.bno}</td>
+                <td><a href='/detail/<c:out value="${BoardDTO.bno}"/>'> ${BoardDTO.title}</td>
+                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${BoardDTO.regDate}"/></td>
+                <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${BoardDTO.updateDate}"/></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 </div>
 
 </body>

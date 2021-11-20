@@ -13,5 +13,14 @@ public interface BoardDAO {
     //상세
     BoardDTO detail(Long bno) throws Exception;
 
+    //등록
+    void insert(BoardDTO boardDTO) throws Exception;
+
+    //삭제
+    int delete(Long bno) throws Exception;
+
+    //수정
+    int update(BoardDTO boardDTO) throws Exception;
+
 
 }

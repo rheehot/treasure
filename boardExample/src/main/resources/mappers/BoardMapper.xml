@@ -5,6 +5,7 @@
         <![CDATA[
         SELECT bno, title, regDate, updateDate
         FROM board
+        WHERE bno > 0
         ORDER BY bno DESC
         ]]>
     </select>
@@ -14,4 +15,24 @@
         FROM board
         WHERE bno = #{bno}
     </select>
+
+    <insert id="insert">
+        insert into board(title, content, writer)
+        VALUES (#{title}, #{content}, #{writer})
+    </insert>
+
+    <delete id="delete">
+        DELETE
+        FROM board
+        WHERE bno = #{bno}
+    </delete>
+
+    <update id="update">
+        UPDATE board
+        set title      = #{title},
+            content    = #{content},
+            writer     = #{writer},
+            updateDate = now()
+        WHERE bno = #{bno}
+    </update>
 </mapper>
