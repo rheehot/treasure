@@ -1,15 +1,14 @@
 package com.board.controller;
 
 import com.board.dto.BoardDTO;
+import com.board.dto.Criteria;
+import com.board.dto.PageMaker;
 import com.board.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -19,12 +18,24 @@ public class BoardController {
     @Autowired
     BoardService boardService;
 
+    //    @GetMapping("/list")
+//    private String boardList(Model model) throws Exception {
+//        model.addAttribute("list", boardService.boardList());
+//
+//        return "list";
+//    }
     @GetMapping("/list")
-    private String boardList(Model model) throws Exception {
-        model.addAttribute("list", boardService.boardList());
+    private String boardList(Criteria cri, Model model) throws Exception {
+
+        PageMaker pageMaker = new PageMaker();
+        pageMaker.setCri(cri);
+        pageMaker.setTotalCount(boardService.totalBoardList());
+        model.addAttribute("list", boardService.boardList(cri));
+        model.addAttribute("pageMaker", pageMaker);
 
         return "list";
     }
+
 
     @GetMapping("/detail/{bno}")
     public String detail(@PathVariable Long bno, Model model) throws Exception {

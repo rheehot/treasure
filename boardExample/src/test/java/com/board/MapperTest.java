@@ -16,18 +16,18 @@ public class MapperTest {
     @Autowired
     private BoardDAO boardDAO;
 
-    //리스트
-    @Test
-    public void testList() throws Exception {
-        List<BoardDTO> list = boardDAO.boardList();
-
-        for (BoardDTO boardDTO : list) {
-            System.out.println("bno : " + boardDTO.getBno());
-            System.out.println("title : " + boardDTO.getTitle());
-            System.out.println("regDate : " + boardDTO.getRegDate());
-            System.out.println("updateDate : " + boardDTO.getUpdateDate());
-        }
-    }
+//    //리스트
+//    @Test
+//    public void testList() throws Exception {
+//        List<BoardDTO> list = boardDAO.boardList();
+//
+//        for (BoardDTO boardDTO : list) {
+//            System.out.println("bno : " + boardDTO.getBno());
+//            System.out.println("title : " + boardDTO.getTitle());
+//            System.out.println("regDate : " + boardDTO.getRegDate());
+//            System.out.println("updateDate : " + boardDTO.getUpdateDate());
+//        }
+//    }
 
     //등록
     @Test
@@ -65,6 +65,5 @@ public class MapperTest {
         log.info("UPDATE INFO = {}", count);
 
     }
-
 
 }

@@ -39,8 +39,8 @@
                 if (operation === 'delete') {
                     formObj.attr("action", "/delete");
                 } else if (operation === 'list') {
-                    self.location = "/list";
-                    return;
+                    formObj.attr("action", "/list").attr("method", "get");
+                    formObj.empty();
                 }
                 formObj.submit();
             });
