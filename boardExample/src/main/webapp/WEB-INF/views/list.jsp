@@ -64,7 +64,7 @@
         <c:if test="${pageMaker.prev }">
             <li>
                 <a href='<c:url value="/list?page=${pageMaker.startPage-1 }"/>'><i
-                        class="fa fa-chevron-left"></i></a>
+                        class="fa fa-chevron-left"></i>이전</a>
             </li>
         </c:if>
         <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="pageNum">
@@ -75,7 +75,7 @@
         <c:if test="${pageMaker.next && pageMaker.endPage >0 }">
             <li>
                 <a href='<c:url value="/list?page=${pageMaker.endPage+1 }"/>'><i
-                        class="fa fa-chevron-right"></i></a>
+                        class="fa fa-chevron-right"></i>다음</a>
             </li>
         </c:if>
     </ul>
