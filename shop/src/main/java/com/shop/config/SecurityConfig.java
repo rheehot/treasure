@@ -1,5 +1,6 @@
 package com.shop.config;
 
+import com.shop.constant.Role;
 import com.shop.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +21,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     MemberService memberService;
 
+
+    Role role;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //http 요청에 대한 보안을 설정.
@@ -36,8 +40,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/"); // 로그아웃 성공 시 이동할 URL 설정
 
         http.authorizeRequests() //시큐리티 처리에 HttpSetvletRequest를 이용한다는 의미.
-                .mvcMatchers("/", "/members/login", "/members/**", "/item/**", "/images/**", "/main/*", "/board/**", "/about/**","/cs/**").permitAll() //모든 사용자가 접근 가능.
-                .mvcMatchers("/admin/**").hasRole("ADMIN") //ADMIN 접근 가능.
+                .mvcMatchers("/", "/members/login", "/members/**", "/item/**", "/images/**", "/main/*", "/board/**", "/about/**", "/cs/**").permitAll() //모든 사용자가 접근 가능.
+                .mvcMatchers("/admin/**").hasRole(Role.ADMIN.toString()) //ADMIN 접근 가능. .toString, .name 도 가능.
                 .anyRequest().authenticated(); //설정해준 경로 외 나머지 경로는 모두 인증을 요구.
 
         http.exceptionHandling() //인증되지 않은 사용자가 리소스 접근시 수행하는 핸들러 등록.
@@ -63,4 +67,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //비밀번호를 암호화
         return new BCryptPasswordEncoder();
     }
+
+    //임시로 늘리기 위한 주석
 }

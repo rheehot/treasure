@@ -47,7 +47,7 @@ public class MemberController {
             Member member = Member.createMember(memberFormDto, passwordEncoder);
             memberService.saveMember(member);
         } catch (IllegalStateException e) {
-            //중복 회원가입 예외 발생 시 에러 메세지를 뷰로 전달.
+            //중복 회원가입 예외 발생 시 에러 메세지를 뷰로 전달.r
             model.addAttribute("errorMessage", e.getMessage());
             return "member/memberForm";
         }
