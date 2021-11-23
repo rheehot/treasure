@@ -29,7 +29,6 @@
 
     <script>
         $(document).ready(function () {
-
         });
     </script>
 
@@ -53,7 +52,7 @@
         <c:forEach items="${list}" var="BoardDTO">
             <tr>
                 <td>${BoardDTO.bno}</td>
-                <td><a href='/detail/<c:out value="${BoardDTO.bno}"/>'> ${BoardDTO.title}</td>
+                <td><a class="move" href='/detail/<c:out value="${BoardDTO.bno}"/>'> ${BoardDTO.title}</td>
                 <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${BoardDTO.regDate}"/></td>
                 <td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${BoardDTO.updateDate}"/></td>
             </tr>

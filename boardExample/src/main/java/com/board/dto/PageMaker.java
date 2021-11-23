@@ -1,5 +1,8 @@
 package com.board.dto;
 
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 public class PageMaker {
 
     private Criteria cri;
@@ -82,6 +85,23 @@ public class PageMaker {
 
     public void setDisplayPageNum(int displayPageNum) {
         this.displayPageNum = displayPageNum;
+    }
+
+    public String makeQueryPage(int page) {
+        UriComponents uri = UriComponentsBuilder.newInstance()
+                .queryParam("page", page)
+                .queryParam("perPageNum", cri.getPerPageNum())
+                .build();
+        return uri.toUriString();
+    }
+
+    public String makeQueryPage(int bno, int page) {
+        UriComponents uri = UriComponentsBuilder.newInstance()
+                .queryParam("bno", bno)
+                .queryParam("page", page)
+                .queryParam("perPageNum", cri.getPerPageNum())
+                .build();
+        return uri.toUriString();
     }
 
 }

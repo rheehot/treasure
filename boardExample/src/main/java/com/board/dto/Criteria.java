@@ -8,6 +8,10 @@ public class Criteria {
     private int page; //현재 페이지 번호
     private int perPageNum; // 한 페이지당 보여줄 게시글의 갯수
 
+    private String type; //검색 타입
+    private String keyword; //검색 키워드
+
+
     //특정 페이지의 게시글의 시작 번호, 게시글의 시작 행 번호
     public int getPageStart() {
         return (this.page - 1) * perPageNum;
@@ -16,7 +20,7 @@ public class Criteria {
 
     public Criteria() {
         this.page = 1;
-        this.perPageNum = 10;
+        this.perPageNum = 5;
     }
 
     public int getPage() {
@@ -42,6 +46,10 @@ public class Criteria {
         } else {
             this.perPageNum = pageCount;
         }
+    }
+
+    public String[] getTypeArr() {
+        return type == null ? new String[]{} : type.split("");
     }
 
 

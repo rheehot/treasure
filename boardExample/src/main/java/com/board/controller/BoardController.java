@@ -38,7 +38,13 @@ public class BoardController {
 
 
     @GetMapping("/detail/{bno}")
-    public String detail(@PathVariable Long bno, Model model) throws Exception {
+    public String detail(@PathVariable Long bno, Criteria cri, Model model) throws Exception {
+
+        PageMaker pageMaker = new PageMaker();
+        pageMaker.setCri(cri);
+
+        model.addAttribute("page", cri.getPage());
+        model.addAttribute("pageMaker", pageMaker);
         model.addAttribute("detail", boardService.detail(bno));
 
         return "detail";
@@ -57,7 +63,9 @@ public class BoardController {
     }
 
     @GetMapping("/update/{bno}")
-    public String update(@PathVariable Long bno, Model model) throws Exception {
+    public String update(@PathVariable Long bno, Criteria cri, Model model) throws Exception {
+
+
         model.addAttribute("update", boardService.detail(bno));
 
         return "update";
